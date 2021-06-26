@@ -1,0 +1,7 @@
+<p *ngIf="(categories$ | async) as categories">
+    <li *ngFor="let item of categories">
+        {{item.categoryId}} {{ item.categoryName}}
+
+    </li>
+
+</p>

@@ -1,0 +1,20 @@
+{
+    "/person": {
+        "target": "https://13.250.13.138/ArcstoneIdentityManagerService.SandboxV1.2",
+        "secure": false,
+        "changeOrigin": true,
+        "logLevel": "debug",
+        "pathRewrite": {
+            "^/person": ""
+        }
+    },
+    "/check": {
+        "target": "https://13.250.13.138/ArcstoneChecklistManagerService",
+        "secure": false,
+        "changeOrigin": true,
+        "pathRewrite": {
+            "^/check": ""
+        },
+        "logLevel": "debug"
+    }
+}
