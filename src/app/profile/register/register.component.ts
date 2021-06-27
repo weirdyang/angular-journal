@@ -82,15 +82,8 @@ export class RegisterComponent implements OnInit, OnDestroy {
     console.log(this.form.value as RegisterUser);
     this.authService.registerUser(this.form.value as RegisterUser)
       .subscribe(response => {
-        let reply = response as IApiResponse;
-        if (reply) {
-          if (reply.hasError) {
-            this.snackBar.open(reply.message, 'OK')
-          }
-        } else {
           this.snackBar.open("Please login.", 'OK');
           this.dialogRef.close();
-        }
       })
 
   }
