@@ -1,66 +1,69 @@
 <h2 mat-dialog-title>Register</h2>
-<mat-dialog-content class="dialog-container"
-    [formGroup]="form">
-    <mat-form-field appearance="fill">
-        <mat-label>Username</mat-label>
-        <input matInput
-            type="text"
-            formControlName="username"
-            placeholder="Username">
-    </mat-form-field>
-    <mat-form-field appearance="fill">
-        <mat-label>Email</mat-label>
-        <input matInput
-            type="email"
-            formControlName="email"
-            placeholder="Email">
-    </mat-form-field>
-    <mat-form-field appearance="fill">
-        <mat-label>Password</mat-label>
-        <input matInput
-            formControlName="password"
-            [type]="hide ? 'password' : 'text'"
-            placeholder="password">
-        <button mat-icon-button
-            matSuffix
-            (click)="hide = !hide"
-            [attr.aria-label]="'Hide password'"
-            [attr.aria-pressed]="hide">
-            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+<form>
+    <mat-dialog-content class="dialog-container"
+        [formGroup]="form">
+        <mat-form-field appearance="fill">
+            <mat-label>Username</mat-label>
+            <input matInput
+                type="text"
+                formControlName="username"
+                placeholder="Username">
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Email</mat-label>
+            <input matInput
+                type="email"
+                formControlName="email"
+                placeholder="Email">
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Password</mat-label>
+            <input matInput
+                formControlName="password"
+                [type]="hide ? 'password' : 'text'"
+                placeholder="password">
+            <button mat-icon-button
+                matSuffix
+                (click)="hide = !hide"
+                [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+            <mat-error *ngIf="password?.invalid && !password?.hasError('required')">Password must be at least 8
+                characters</mat-error>
+            <mat-error *ngIf="password?.errors?.passwordStrength">Your password must have lower case, upper case and
+                numeric
+                characters.</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Confirm password</mat-label>
+            <input matInput
+                formControlName="confirmPassword"
+                [type]="hide ? 'password' : 'text'"
+                placeholder="password">
+            <button mat-icon-button
+                matSuffix
+                (click)="hide = !hide"
+                [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+            <mat-error *ngIf="confirmPassword?.errors?.mismatch">Passwords do not match</mat-error>
+        </mat-form-field>
+    </mat-dialog-content>
+    <mat-dialog-actions>
+        <button mat-raised-button
+            color="primary"
+            [disabled]="!form.valid"
+            (click)="save()">
+            <mat-icon>check</mat-icon>
         </button>
-        <mat-error *ngIf="password?.invalid && !password?.hasError('required')">Password must be at least 8
-            characters</mat-error>
-        <mat-error *ngIf="password?.errors?.passwordStrength">Your password must have lower case, upper case and numeric
-            characters.</mat-error>
-    </mat-form-field>
-    <mat-form-field appearance="fill">
-        <mat-label>Confirm password</mat-label>
-        <input matInput
-            formControlName="confirmPassword"
-            [type]="hide ? 'password' : 'text'"
-            placeholder="password">
-        <button mat-icon-button
-            matSuffix
-            (click)="hide = !hide"
-            [attr.aria-label]="'Hide password'"
-            [attr.aria-pressed]="hide">
-            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        <button mat-raised-button
+            color="primary"
+            (click)="dismiss()">
+            <mat-icon>
+                cancel
+            </mat-icon>
         </button>
-        <mat-error *ngIf="confirmPassword?.errors?.mismatch">Passwords do not match</mat-error>
-    </mat-form-field>
-</mat-dialog-content>
-<mat-dialog-actions>
-    <button mat-raised-button
-        color="primary"
-        [disabled]="!form.valid"
-        (click)="save()">
-        <mat-icon>check</mat-icon>
-    </button>
-    <button mat-raised-button
-        color="primary"
-        (click)="dismiss()">
-        <mat-icon>
-            cancel
-        </mat-icon>
-    </button>
-</mat-dialog-actions>
+    </mat-dialog-actions>
+</form>

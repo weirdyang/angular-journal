@@ -22,7 +22,7 @@ interface MenuItem {
 })
 export class NavBarComponent implements OnDestroy {
   menuItems: Array<MenuItem> = [{
-    name: 'leaf', path: 'profile', icon: 'leaf'
+    name: 'Checklist Categories', path: 'profile', icon: 'leaf'
   }]
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
