@@ -7,12 +7,14 @@
             <input matInput
                 type="username"
                 formControlName="username"
+                autocomplete="username"
                 placeholder="Username">
         </mat-form-field>
         <mat-form-field appearance="fill">
             <mat-label>Password</mat-label>
             <input matInput
                 formControlName="password"
+                autocomplete="new-password"
                 [type]="hide ? 'password' : 'text'"
                 placeholder="password">
             <button mat-icon-button
